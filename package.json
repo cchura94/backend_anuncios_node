@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cchura94/backend_anuncios_node#readme",
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.3.0"
   }
 }
