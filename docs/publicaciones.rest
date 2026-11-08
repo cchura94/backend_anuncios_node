@@ -1,0 +1,78 @@
+@baseUrl = http://127.0.0.1:3000/api
+@categoriaId = 1
+@publicacionId = 1
+
+### Listar publicaciones
+GET {{baseUrl}}/publicaciones
+
+### Listar publicaciones filtradas por categoria
+GET {{baseUrl}}/publicaciones?categoriaId={{categoriaId}}
+
+### Listar publicaciones filtradas por estado (activa | pausada | vendida)
+GET {{baseUrl}}/publicaciones?estado=activa
+
+### Buscar publicaciones por texto en el titulo
+GET {{baseUrl}}/publicaciones?q=toyota
+
+### Guardar publicacion
+POST {{baseUrl}}/publicaciones
+Content-Type: application/json
+Accept: application/json
+
+{
+    "titulo": "Auto Toyota Corolla 2019",
+    "descripcion": "Unico dueño, 45.000 km, full equipo",
+    "precio": 15000,
+    "categoriaId": {{categoriaId}},
+    "estado": "activa"
+}
+
+### Mostrar publicacion
+GET {{baseUrl}}/publicaciones/{{publicacionId}}
+
+### Modificar publicacion (actualizacion parcial)
+PUT {{baseUrl}}/publicaciones/{{publicacionId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "precio": 14500,
+    "estado": "pausada"
+}
+
+### Eliminar publicacion
+DELETE {{baseUrl}}/publicaciones/{{publicacionId}}
+
+### Error: publicacion inexistente
+GET {{baseUrl}}/publicaciones/999
+
+### Error: categoria inexistente al crear
+POST {{baseUrl}}/publicaciones
+Content-Type: application/json
+Accept: application/json
+
+{
+    "titulo": "Publicacion sin categoria valida",
+    "precio": 100,
+    "categoriaId": 999
+}
+
+### Error: estado invalido
+PUT {{baseUrl}}/publicaciones/{{publicacionId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "estado": "borrada"
+}
+
+### Error: precio invalido
+POST {{baseUrl}}/publicaciones
+Content-Type: application/json
+Accept: application/json
+
+{
+    "titulo": "Publicacion con precio invalido",
+    "precio": -5,
+    "categoriaId": {{categoriaId}}
+}

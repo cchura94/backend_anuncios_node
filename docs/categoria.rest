@@ -1,0 +1,27 @@
+GET http://127.0.0.1:3000/api/categorias
+
+### Guardar categoria
+POST http://127.0.0.1:3000/api/categorias
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "ALQUILERES",
+    "descripcion": "publicaciones sobre alquileres de oficinas y negocios"
+}
+
+### Mostrar categoria
+GET http://127.0.0.1:3000/api/categorias/2
+
+###  Modificar
+PUT http://127.0.0.1:3000/api/categorias/2
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "ALQUILERES DE OFICINA",
+    "descripcion": "publicaciones sobre alquileres de oficinas y negocios"
+}
+
+### Eliminar
+DELETE http://127.0.0.1:3000/api/categorias/2
